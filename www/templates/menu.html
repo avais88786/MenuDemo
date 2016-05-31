@@ -11,7 +11,9 @@
     </ion-nav-bar>
      <ion-drawer-vertical-wrapper direction="down" state="closed" class="has-header">
           <ion-drawer-vertical-content>
-              <img src="" alt="Horizontal Giraffe" title="Horizontal Giraffe">
+              <ul class="flex-container" ng-controller="HomeCtrl as homeController">
+                <li class="flex-item" ng-repeat="itemAdded in homeController.shoppingBasket">{{itemAdded}}</li> 
+              </ul>
           </ion-drawer-vertical-content>
           <ion-drawer-vertical-handle>
           </ion-drawer-vertical-handle>

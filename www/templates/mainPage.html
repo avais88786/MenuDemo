@@ -1,8 +1,8 @@
 <ion-view>
   <ion-content>
     <ul class="flex-container">
-          <li class="flex-item">1</li>  
-          <li class="flex-item">2</li>
+          <li class="flex-item" ng-repeat="item in items" ng-click="addItem(item)" >{{item}}</li>  
+          <!--<li class="flex-item">2</li>
           <li class="flex-item">3</li>
           <li class="flex-item">4</li>
           <li class="flex-item">5</li>
@@ -29,7 +29,7 @@
           <li class="flex-item">2</li>
           <li class="flex-item">3</li>
           <li class="flex-item">4</li>
-          <li class="flex-item">5</li>
+          <li class="flex-item">5</li>-->
         </ul>
   </ion-content>
 </ion-view>

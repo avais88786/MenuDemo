@@ -5,6 +5,19 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers','ionic.contrib.drawer.vertical'])
+  .service('Shared',function(){
+    var ShoppingBasket = [];
+    
+     return {
+            getShoppingBasket: function () {
+                return ShoppingBasket;
+            },
+            setShoppingBasket: function(value) {
+                ShoppingBasket.push(value);
+            }
+        };
+    
+  })
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -36,7 +49,8 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic.contrib.drawer.
       url: '/homepage',
       views: {
         'menuContent': {
-          templateUrl: 'templates/mainPage.html'
+          templateUrl: 'templates/mainPage.html',
+          controller: 'HomeCtrl'
         }
       }
     })

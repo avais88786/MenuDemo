@@ -52,5 +52,23 @@ angular.module('starter.controllers', [])
   ];
 })
 
+.controller('HomeCtrl', function($scope,Shared) {
+  var self = this;
+  var itemsToPush = [];
+  
+  for(var i=1;i<20;i++){
+    itemsToPush.push(i);
+  }
+  
+  $scope.items = itemsToPush;
+  
+  $scope.addItem = function(item){
+    Shared.setShoppingBasket(item);
+  }
+  
+  self.shoppingBasket = Shared.getShoppingBasket();
+  
+})
+
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
