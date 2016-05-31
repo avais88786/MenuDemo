@@ -11,9 +11,11 @@
     </ion-nav-bar>
      <ion-drawer-vertical-wrapper direction="down" state="closed" class="has-header">
           <ion-drawer-vertical-content>
-              <ul class="flex-container" ng-controller="HomeCtrl as homeController">
-                <li class="flex-item" ng-repeat="itemAdded in homeController.shoppingBasket">{{itemAdded}}</li> 
+            <div ng-controller="HomeCtrl as homeController">
+              <ul class="flex-container">
+                <li class="flex-item-small" ng-repeat="itemAdded in homeController.shoppingBasket" ng-click="removeItem(itemAdded)">{{itemAdded}}</li> 
               </ul>
+              </div>
           </ion-drawer-vertical-content>
           <ion-drawer-vertical-handle>
           </ion-drawer-vertical-handle>

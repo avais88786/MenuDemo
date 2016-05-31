@@ -63,8 +63,20 @@ angular.module('starter.controllers', [])
   $scope.items = itemsToPush;
   
   $scope.addItem = function(item){
-    Shared.setShoppingBasket(item);
+    Shared.addItemToShoppingBasket(item);
   }
+  
+  $scope.removeItem = function(item){
+    var shoppingBasket = Shared.getShoppingBasket();
+    shoppingBasket = shoppingBasket.filter(function(element){
+      return element != item;
+    });
+    
+    Shared.setShoppingBasket(shoppingBasket);
+    self.shoppingBasket = shoppingBasket;
+    
+  }
+  
   
   self.shoppingBasket = Shared.getShoppingBasket();
   

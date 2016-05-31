@@ -13,6 +13,9 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic.contrib.drawer.
                 return ShoppingBasket;
             },
             setShoppingBasket: function(value) {
+                ShoppingBasket = value;
+            },
+            addItemToShoppingBasket: function(value) {
                 ShoppingBasket.push(value);
             }
         };
