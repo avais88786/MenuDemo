@@ -44,3 +44,11 @@
   text-align: center;
 }
 
+.flex-item-footer{
+  position:  absolute;
+  top:80px;
+  color: aqua;
+  left:70px;
+  font-weight: bold;
+  font-size: 1.5em;
+}

@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $cordovaToast) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -31,6 +31,9 @@ angular.module('starter.controllers', [])
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
+    
+    $cordovaToast.show("Logging in","long","center");
+    
     console.log('Doing login', $scope.loginData);
 
     // Simulate a login delay. Remove this and replace with your login
@@ -55,12 +58,16 @@ angular.module('starter.controllers', [])
 .controller('HomeCtrl', function($scope,Shared) {
   var self = this;
   var itemsToPush = [];
+  //$scope.items = [];
   
   for(var i=1;i<20;i++){
+    $scope.items = [{Name:i,Quantity:i}];
+    // $scope.Items[i].Name = i;
+    // $scope.Items[i].Quantity = i;
     itemsToPush.push(i);
   }
   
-  $scope.items = itemsToPush;
+ // $scope.items = itemsToPush;
   
   $scope.addItem = function(item){
     Shared.addItemToShoppingBasket(item);
@@ -138,6 +145,9 @@ angular.module('starter.controllers', [])
 
   //This method is executed when the user press the "Login with facebook" button
   $scope.facebookSignIn = function() {
+    // if (window.cordova.platformId = 'browser'){
+    //     facebookConnectPlugin.browserInit("624798877677818");
+    //   }
     facebookConnectPlugin.getLoginStatus(function(success){
       if(success.status === 'connected'){
         // The user is logged in and has authenticated your app, and response.authResponse supplies
@@ -186,6 +196,36 @@ angular.module('starter.controllers', [])
       }
     });
   };
+  
+  $scope.googleSignIn = function() {
+    $ionicLoading.show({
+      template: 'Logging in...'
+    });
+
+    window.plugins.googleplus.login(
+      {},
+      function (user_data) {
+        // For the purpose of this example I will store user data on local storage
+        UserService.setUser({
+          userID: user_data.userId,
+          name: user_data.displayName,
+          email: user_data.email,
+          picture: user_data.imageUrl,
+          accessToken: user_data.accessToken,
+          idToken: user_data.idToken
+        });
+
+        $ionicLoading.hide();
+        $state.go('app.home');
+      },
+      function (msg) {
+        $ionicLoading.hide();
+      }
+    );
+  };
+  
+  
+  
 });
 
 

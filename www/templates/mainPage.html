@@ -1,7 +1,10 @@
 <ion-view>
   <ion-content>
     <ul class="flex-container">
-          <li class="flex-item" ng-repeat="item in items" ng-click="addItem(item)" >{{item}}</li>  
+         <div ng-repeat="item in items" style="position:relative;">
+          <li class="flex-item" ng-click="addItem(item)" >{{item.Name}}</li>
+          <label class="flex-item-footer">{{item.Quantity}}</label>
+          </div>  
           <!--<li class="flex-item">2</li>
           <li class="flex-item">3</li>
           <li class="flex-item">4</li>
