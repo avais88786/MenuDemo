@@ -61,7 +61,7 @@ angular.module('starter.controllers', [])
   $scope.items = [{}];
   
   for(var i=0;i<20;i++){
-    $scope.items[i] = {Name:i+1,Quantity:i+1};
+    $scope.items[i] = {Name:i+1,Quantity:1};
     // $scope.Items[i].Name = i;
     // $scope.Items[i].Quantity = i;
     itemsToPush.push(i);
@@ -72,6 +72,12 @@ angular.module('starter.controllers', [])
   $scope.addItem = function(item){
     Shared.addItemToShoppingBasket(item);
   }
+  
+  $scope.addQuantity = function(item){
+    item.Quantity = item.Quantity + 1;
+  }
+  
+  
   
   $scope.removeItem = function(item){
     var shoppingBasket = Shared.getShoppingBasket();

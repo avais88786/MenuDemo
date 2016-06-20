@@ -6,7 +6,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers','ionic.contrib.drawer.vertical','ngCordova'])
   .service('Shared',function(){
-    var ShoppingBasket = [];
+    var ShoppingBasket = [{}];
     
      return {
             getShoppingBasket: function () {
