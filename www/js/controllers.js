@@ -58,10 +58,10 @@ angular.module('starter.controllers', [])
 .controller('HomeCtrl', function($scope,Shared) {
   var self = this;
   var itemsToPush = [];
-  //$scope.items = [];
+  $scope.items = [{}];
   
-  for(var i=1;i<20;i++){
-    $scope.items = [{Name:i,Quantity:i}];
+  for(var i=0;i<20;i++){
+    $scope.items[i] = {Name:i+1,Quantity:i+1};
     // $scope.Items[i].Name = i;
     // $scope.Items[i].Quantity = i;
     itemsToPush.push(i);

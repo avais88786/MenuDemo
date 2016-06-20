@@ -13,7 +13,10 @@
           <ion-drawer-vertical-content>
             <div ng-controller="HomeCtrl as homeController">
               <ul class="flex-container">
-                <li class="flex-item-small" ng-repeat="itemAdded in homeController.shoppingBasket" ng-click="removeItem(itemAdded)">{{itemAdded}}</li> 
+                <div style="position:relative" ng-repeat="itemAdded in homeController.shoppingBasket">
+                <li class="flex-item-small"  ng-click="removeItem(itemAdded)">{{itemAdded.Name}}</li>
+                <label class="flex-item-footer-small">{{itemAdded.Quantity}}</label>
+                </div> 
               </ul>
               </div>
           </ion-drawer-vertical-content>
