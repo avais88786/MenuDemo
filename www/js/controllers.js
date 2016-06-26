@@ -55,7 +55,7 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('HomeCtrl', function($scope,Shared) {
+.controller('HomeCtrl', function($scope,$timeout,Shared) {
   var self = this;
   var itemsToPush = [];
   $scope.items = [{}];
@@ -70,11 +70,32 @@ angular.module('starter.controllers', [])
  // $scope.items = itemsToPush;
   
   $scope.addItem = function(item){
+    if ($scope.clicked) {
+        $scope.cancelClick = true;
+        return;
+    }
+    
+    $scope.clicked = true;
+    
+    $timeout(function () {
+        if ($scope.cancelClick) {
+            $scope.cancelClick = false;
+            $scope.clicked = false;
+            return;
+        }
+    
     Shared.addItemToShoppingBasket(item);
+    
+    $scope.cancelClick = false;
+        $scope.clicked = false;
+    }, 300);
   }
   
   $scope.addQuantity = function(item){
-    item.Quantity = item.Quantity + 1;
+    $timeout(function (){
+      item.Quantity = item.Quantity + 1;  
+    });
+    
   }
   
   

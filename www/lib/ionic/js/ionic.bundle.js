@@ -65847,8 +65847,15 @@ IonicModule
       angular.isUndefined(attr.isEnabled) && attr.$set('isEnabled', 'true');
       angular.isUndefined(attr.width) && attr.$set('width', '275');
 
-      element.addClass('menu menu-' + attr.side);
+      if (attr.side.indexOf('right') > -1 ){
+        element.addClass('menur menur-' + attr.side);
+      }
+      else{
+        element.addClass('menu menu-' + attr.side);
+      }
+      
 
+      
       return function($scope, $element, $attr, sideMenuCtrl) {
         $scope.side = $attr.side || 'left';
 
