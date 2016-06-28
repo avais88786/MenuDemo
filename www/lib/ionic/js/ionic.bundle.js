@@ -8247,7 +8247,13 @@ ionic.scroll = {
     },
     bringUp: function() {
       if(this.el.style.zIndex !== '0') {
-        this.el.style.zIndex = '0';
+        
+        if(this.el.className.indexOf('right') > 0) {
+          this.el.style.zIndex = '1';  
+        }
+        else{
+          this.el.style.zIndex = '0';
+        }
       }
     },
     pushDown: function() {
@@ -66036,7 +66042,10 @@ function($timeout, $ionicGesture, $window) {
           },
           setTranslateX: ionic.animationFrameThrottle(function(amount) {
             var xTransform = content.offsetX + amount;
-            $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + xTransform + 'px,0,0)';
+            if (amount >= 0)
+            {
+              $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + xTransform + 'px,0,0)';
+            }
             $timeout(function() {
               $scope.sideMenuContentTranslateX = amount;
             });
