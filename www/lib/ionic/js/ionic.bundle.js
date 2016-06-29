@@ -8249,7 +8249,9 @@ ionic.scroll = {
       if(this.el.style.zIndex !== '0') {
         
         if(this.el.className.indexOf('right') > 0) {
-          this.el.style.zIndex = '1';  
+          this.el.style.zIndex = '1';
+          $('ion-drawer-vertical-wrapper').css({top:'105px'})  
+          $('[name="menuContent"]').css({top:'65px'})
         }
         else{
           this.el.style.zIndex = '0';

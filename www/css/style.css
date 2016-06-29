@@ -120,6 +120,7 @@
   right: 0; 
   z-index: 0;
   width:100% !important;
+  top:43px;
   }
 
 .aside-open.aside-resizing .menur-right {
