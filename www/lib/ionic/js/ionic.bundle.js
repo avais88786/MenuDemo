@@ -8250,8 +8250,8 @@ ionic.scroll = {
         
         if(this.el.className.indexOf('right') > 0) {
           this.el.style.zIndex = '1';
-          $('ion-drawer-vertical-wrapper').css({top:'105px'})  
-          $('[name="menuContent"]').css({top:'65px'})
+          this.el.parentNode.querySelector('ion-drawer-vertical-wrapper').style.top = '105px';  
+          this.el.parentNode.querySelector('[name="menuContent"]').style.top = '65px' ;
         }
         else{
           this.el.style.zIndex = '0';
@@ -8262,6 +8262,12 @@ ionic.scroll = {
       if(this.el.style.zIndex !== '-1') {
         this.el.style.zIndex = '-1';
       }
+      
+      if(this.el.className.indexOf('right') > 0) {
+        this.el.parentNode.querySelector('ion-drawer-vertical-wrapper').style.top = '44px';  
+          this.el.parentNode.querySelector('[name="menuContent"]').style.top = '0px' ;
+      }
+      
     }
   });
 
