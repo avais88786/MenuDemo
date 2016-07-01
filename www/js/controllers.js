@@ -29,6 +29,8 @@ angular.module('starter.controllers', [])
     $scope.modal.show();
   };
 
+
+
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     
@@ -113,6 +115,11 @@ angular.module('starter.controllers', [])
   
   
   self.shoppingBasket = Shared.getShoppingBasket();
+ 
+ 
+$scope.filterItems = function(input){
+  //$scope.items.filter(function())
+}
   
 })
 

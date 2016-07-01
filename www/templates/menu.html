@@ -59,9 +59,11 @@
     <!--<ion-header-bar style="background-color:rgba(0, 0, 0, 0);" >
     </ion-header-bar>-->
     <ion-content>
-      <ion-list>
+      <ion-list >
         <ion-item class="custom-ion-item" >
-          <input type="text">
+          <div ng-controller="HomeCtrl as homeController">
+          <input type="text" ng-change="filterItems(character)" ng-model="character">
+          </div>
         </ion-item>
       </ion-list>
     </ion-content>
