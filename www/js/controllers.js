@@ -64,6 +64,7 @@ angular.module('starter.controllers', [])
   
   for(var i=0;i<20;i++){
     $scope.items[i] = {Name:i+1,Quantity:1};
+    self.items = $scope.items;
     // $scope.Items[i].Name = i;
     // $scope.Items[i].Quantity = i;
     itemsToPush.push(i);
@@ -118,7 +119,12 @@ angular.module('starter.controllers', [])
  
  
 $scope.filterItems = function(input){
-  //$scope.items.filter(function())
+ 
+  var newItemList = $scope.items.filter(function(item){
+    return (item.Name == input);
+  });
+  
+  self.items = newItemList;
 }
   
 })
