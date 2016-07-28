@@ -122,14 +122,16 @@ $scope.filterItems = function(input){
  }
 else
  {
-   document.querySelectorAll("#addCustomItem")[0].setAttribute("hidden","hidden");
+   //document.querySelectorAll("#addCustomItem")[0].setAttribute("hidden","hidden");
     newItemList = $rootScope.originalItems.filter(function(item){
       return (item.Name == input);
     });
     
     if (newItemList.length ==0)
     {
-      document.querySelectorAll("#addCustomItem")[0].removeAttribute("hidden");
+      newItemList = [{}];
+      newItemList[0] = {Name:input,Quantity:1};
+      $rootScope.originalItems.push(newItemList[0]);
     }
 
  }
