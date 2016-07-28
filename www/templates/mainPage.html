@@ -2,10 +2,12 @@
   <ion-content>
     <div ng-controller="HomeCtrl as homeC">
       <ul class="flex-container">
-          <div ng-repeat="item in homeC.items" style="position:relative;">
+        <li id="addCustomItem" class="flex-item" ng-click="addItem(item)" ng-dblclick="addQuantity(item)" hidden="hidden">+</li>
+          <div ng-repeat="item in getItems()" style="position:relative;">
             <li class="flex-item" ng-click="addItem(item)" ng-dblclick="addQuantity(item)">{{item.Name}}</li>
             <label class="flex-item-footer">{{item.Quantity}}</label>
           </div>
+            
       </ul>
     </div>
   </ion-content>

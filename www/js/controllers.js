@@ -57,21 +57,21 @@ angular.module('starter.controllers', [])
   ];
 })
 
-.controller('HomeCtrl', function($scope,$timeout,Shared) {
+.controller('HomeCtrl', function($scope,$timeout,Shared,$rootScope) {
   var self = this;
-  var itemsToPush = [];
   $scope.items = [{}];
-  
+  $rootScope.items = [{}];
+  $rootScope.originalItems = [{}];
+
   for(var i=0;i<20;i++){
-    $scope.items[i] = {Name:i+1,Quantity:1};
-    self.items = $scope.items;
-    // $scope.Items[i].Name = i;
-    // $scope.Items[i].Quantity = i;
-    itemsToPush.push(i);
+    $rootScope.originalItems[i] = {Name:i+1,Quantity:1};
   }
-  
- // $scope.items = itemsToPush;
-  
+  $rootScope.items = $rootScope.originalItems;
+ 
+  $scope.getItems = function(){
+    return $rootScope.items;
+  }
+
   $scope.addItem = function(item){
     if ($scope.clicked) {
         $scope.cancelClick = true;
@@ -101,8 +101,6 @@ angular.module('starter.controllers', [])
     
   }
   
-  
-  
   $scope.removeItem = function(item){
     var shoppingBasket = Shared.getShoppingBasket();
     shoppingBasket = shoppingBasket.filter(function(element){
@@ -111,22 +109,32 @@ angular.module('starter.controllers', [])
     
     Shared.setShoppingBasket(shoppingBasket);
     self.shoppingBasket = shoppingBasket;
-    
   }
-  
   
   self.shoppingBasket = Shared.getShoppingBasket();
  
- 
 $scope.filterItems = function(input){
- 
-  var newItemList = $scope.items.filter(function(item){
-    return (item.Name == input);
-  });
-  
-  self.items = newItemList;
+
+ var newItemList;
+ if (input.length == 0)
+ {
+   newItemList = $rootScope.originalItems;
+ }
+else
+ {
+   document.querySelectorAll("#addCustomItem")[0].setAttribute("hidden","hidden");
+    newItemList = $rootScope.originalItems.filter(function(item){
+      return (item.Name == input);
+    });
+    
+    if (newItemList.length ==0)
+    {
+      document.querySelectorAll("#addCustomItem")[0].removeAttribute("hidden");
+    }
+
+ }
+  $rootScope.items = newItemList;
 }
-  
 })
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
