@@ -35,7 +35,6 @@
 		// Height of the contents
 		// Based on how much we dragged (compared to this height) we well close automatically or fall back to the opened state)
 		var height = $wrapper[0].clientHeight;
-
 		// Get the handle (if any)
 		var $handle = $element.find('ion-drawer-vertical-handle');
 

@@ -69,7 +69,8 @@ ion-drawer-vertical-wrapper.down/*.closed*/ {
 }
 
 ion-drawer-vertical-wrapper.down.has-header {
-	top: 44px;
+	/*top: 44px;*/
+	top:112px;
 }
 
 ion-drawer-vertical-wrapper.down.has-subheader {

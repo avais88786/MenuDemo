@@ -74,10 +74,9 @@
 .menur {
   position: absolute;
   top: 0;
-  bottom: 0;
   z-index: 0;
-  overflow: hidden;
-  min-height: 100%;
+  overflow: hidden !important;
+  min-height: 62px;
   max-height: 100%;
   width: 275px;
   background-color: #fff; }
