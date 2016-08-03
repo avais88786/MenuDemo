@@ -80,6 +80,11 @@
 				state = STATE_ANIMATING;
 				$wrapper.removeClass(STATE_CLOSE);
 				$wrapper.addClass(STATE_OPEN + ' animate');
+				
+				if (angular.element(document.querySelectorAll(".menur")).css("z-index") == 1){
+					$wrapper.addClass("extra");
+				}
+
 				$timeout(function() {
 					$wrapper.removeClass('animate');
 					state = prevState = STATE_OPEN;
@@ -95,6 +100,11 @@
 				state = STATE_ANIMATING;
 				$wrapper.removeClass(STATE_OPEN);
 				$wrapper.addClass(STATE_CLOSE + ' animate');
+
+				if (angular.element(document.querySelectorAll(".menur")).css("z-index") == 1){
+					$wrapper.addClass("extra");
+				}
+
 				$timeout(function() {
 					$wrapper.removeClass('animate');
 					state = prevState = STATE_CLOSE;

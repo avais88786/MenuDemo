@@ -18,8 +18,9 @@
             <div ng-controller="HomeCtrl as homeController">
               <ul class="flex-container">
                 <div style="position:relative" ng-repeat="itemAdded in homeController.shoppingBasket">
-                  <li class="flex-item-small"  ng-click="removeItem(itemAdded)">{{itemAdded.Name}}</li>
+                  <li class="flex-item-small"  ng-click="removeItem(itemAdded)">{{itemAdded.Label}}</li>
                   <label class="flex-item-footer-small">{{itemAdded.Quantity}}</label>
+                  <label>{{itemAdded.Name}}</label>
                 </div> 
               </ul>
               </div>

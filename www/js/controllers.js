@@ -62,12 +62,12 @@ angular.module('starter.controllers', [])
   $scope.items = [{}];
   $rootScope.items = [{}];
   $rootScope.originalItems = [{}];
-
-  for(var i=0;i<20;i++){
-    $rootScope.originalItems[i] = {Name:i+1,Quantity:1};
+  var localItems = ['Apple','Orange','Banana','Pear','Guava','Grapes'
+                    ,'Mango','Kiwi','Avacado','Tomato','Pineapple','Apricot']
+  for(var i=0;i<12;i++){
+    $rootScope.originalItems[i] = {Name:localItems[i],Quantity:1,Label:localItems[i].substr(0,1)};
   }
   $rootScope.items = $rootScope.originalItems;
- 
   $scope.getItems = function(){
     return $rootScope.items;
   }
@@ -130,7 +130,7 @@ else
     if (newItemList.length ==0)
     {
       newItemList = [{}];
-      newItemList[0] = {Name:input,Quantity:1};
+      newItemList[0] = {Name:input,Quantity:1,Label:input.substr(0,1)};
       $rootScope.originalItems.push(newItemList[0]);
     }
 
