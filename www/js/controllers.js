@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $cordovaToast) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $cordovaToast,$rootScope) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -29,7 +29,10 @@ angular.module('starter.controllers', [])
     $scope.modal.show();
   };
 
-
+  $scope.CloseDrawer = function(menu) {
+    
+    $rootScope.$emit("CloseDrawer",{menu});
+  };
 
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {

@@ -5,11 +5,11 @@
       </ion-nav-back-button>
 
       <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left" ng-click="CloseDrawer('left')">
         </button>
       </ion-nav-buttons>
       <ion-nav-buttons side="right">
-        <button class="button search" menu-toggle="right">
+        <button class="button search" menu-toggle="right" ng-click="CloseDrawer('right')">
         </button>
       </ion-nav-buttons>
     </ion-nav-bar>
@@ -17,8 +17,8 @@
           <ion-drawer-vertical-content>
             <div ng-controller="HomeCtrl as homeController">
               <ul class="flex-container">
-                <div style="position:relative" ng-repeat="itemAdded in homeController.shoppingBasket">
-                  <li class="flex-item-small"  ng-click="removeItem(itemAdded)">{{itemAdded.Label}}</li>
+                <div style="position:relative" ng-repeat="itemAdded in homeController.shoppingBasket" ng-if="itemAdded.Name">
+                  <li class="flex-item-small" ng-click="removeItem(itemAdded)">{{itemAdded.Label}}</li>
                   <label class="flex-item-footer-small">{{itemAdded.Quantity}}</label>
                   <label>{{itemAdded.Name}}</label>
                 </div> 

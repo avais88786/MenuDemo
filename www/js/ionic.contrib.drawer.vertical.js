@@ -4,7 +4,7 @@
 
 	angular.module('ionic.contrib.drawer.vertical', ['ionic'])
 
-	.controller('$ionDrawerVertical', function($scope, $element, $attrs, $ionicGesture, $timeout, $ionicHistory, $ionDrawerVerticalDelegate) {
+	.controller('$ionDrawerVertical', function($scope, $element, $attrs, $ionicGesture, $timeout, $ionicHistory, $ionDrawerVerticalDelegate,$rootScope) {
 
 		// We need closure
 		var self = this;
@@ -81,9 +81,7 @@
 				$wrapper.removeClass(STATE_CLOSE);
 				$wrapper.addClass(STATE_OPEN + ' animate');
 				
-				if (angular.element(document.querySelectorAll(".menur")).css("z-index") == 1){
-					$wrapper.addClass("extra");
-				}
+				$scope.adjustDrawerTop('right');		
 
 				$timeout(function() {
 					$wrapper.removeClass('animate');
@@ -91,19 +89,21 @@
 				}, 400);
 			}
 		}
+
+		
+
+
 		this.openDrawer = open;
 
 		// Close the drawer
-		var close = function() {
+		$scope.close = function() {
 			if ((isOpen() || isDoneDragging()) && !isBusyAnimating()) {
 				$wrapper.attr('style', ''); // @note: this little trick will remove the inline styles
 				state = STATE_ANIMATING;
 				$wrapper.removeClass(STATE_OPEN);
 				$wrapper.addClass(STATE_CLOSE + ' animate');
 
-				if (angular.element(document.querySelectorAll(".menur")).css("z-index") == 1){
-					$wrapper.addClass("extra");
-				}
+				$scope.adjustDrawerTop('right');
 
 				$timeout(function() {
 					$wrapper.removeClass('animate');
@@ -111,7 +111,18 @@
 				}, 400);
 			}
 		}
-		this.closeDrawer = close;
+		this.closeDrawer = $scope.close;
+
+		$scope.adjustDrawerTop = function(menu){
+
+		if (menu == 'right'){
+		 if (angular.element(document.querySelectorAll(".menur")).css("z-index") == 1){
+					$wrapper.addClass("extra");
+				}
+		}
+			else
+				$wrapper.removeClass("extra");
+		};
 
 		// Toggle the drawer
 		var toggle = function() {
@@ -210,6 +221,15 @@
 			}
 
 		}, $handle);
+
+		$rootScope.$on("CloseDrawer",function(event,menu){
+			$scope.adjustDrawerTop(menu);
+			$scope.close();
+		});
+		
+		$rootScope.$on("AdjustDrawerTop",function(){
+			$scope.adjustDrawerTop();
+		});
 
 	});
 
